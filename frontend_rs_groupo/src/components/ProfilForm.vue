@@ -78,6 +78,14 @@ userForm();
     color:#fff;
     font-weight: bold;
 }
+.md-table-cell{
+    text-align:start;
+    color:red;
+}
+.md-table{
+    margin-bottom: 100px;
+    margin-top: 100px;
+}
 
 
 

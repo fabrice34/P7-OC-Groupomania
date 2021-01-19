@@ -1,3 +1,5 @@
+ /* multer permet d'implémenter des téléchargements de fichiers pour que 
+ les utilisateurs puissent télécharger des images  */
 const multer = require('multer')
 
 const MIME_TYPES = {

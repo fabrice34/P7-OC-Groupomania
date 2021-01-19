@@ -42,4 +42,9 @@ export default {
 span{   
     color:rgb(173, 29, 29);
 }
+
+.md-table{
+    margin-bottom: 250px;
+    margin-top: 250px;
+}
 </style>

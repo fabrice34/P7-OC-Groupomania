@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs');  
 const { Console } = require('console');
 const { response } = require('express');
 const Post = require('../models/Post');

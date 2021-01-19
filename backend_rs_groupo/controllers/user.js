@@ -5,6 +5,9 @@ const User = require('../models/User'); // Chemin d'accès au modèle USER
 
 
 
+/* au niveau du middleware signup on utilisera bcrypt qui va nous permettre de hacher
+ (augmente ne niveau de protection),de proteger le mdp lors de l'inscription sur le site de l'utilisation,
+ on creer l'user et on le sauvegarde */
 exports.signup = (req, res, next) => { //inscription ok
   console.error("console from signup", req.body);
   let imagePath = '';
@@ -30,9 +33,9 @@ exports.signup = (req, res, next) => { //inscription ok
   })
     .then((user) => {
       if (!user) {
-        bcrypt.hash(req.body.password, 10, (err, hash) => {
-          userData.password = hash;
-          User.create(userData)
+        bcrypt.hash(req.body.password, 10, (err, hash) => {  //Algoryhtme de hashage du mot de passe(on hash le mdp et on le sale 10fois )
+          userData.password = hash;  //Le hash est sauvegardé dans la base et non le mot de passe en clair
+          User.create(userData)  //creer le nouveau user
             .then((userCreated) => {
               res.json({ status: `${userCreated.email} enregistré!` });
             })
@@ -49,6 +52,13 @@ exports.signup = (req, res, next) => { //inscription ok
     });
 };
 
+
+/* au niveau du middleware login on vient chercher par rapport à l'adresse email:
+avec la fonction user.findone() dans le cas ou il n'a pas d'utilisateur enregistré 
+avec celui la => "utilisateur non trouvé"
+mais s'il est bon, bcrypte va compararer les 2 mdp et que si la comparaison des hashs sont valide 
+alors on nous retournerra un user.id et un token ( on retrouvera se token sur la protection des routes)
+ */
 exports.login = (req, res, next) => {  //connexion ok
   User.findOne({
     where: {
@@ -59,7 +69,7 @@ exports.login = (req, res, next) => {  //connexion ok
       if (!user) {
         return res.status(401).json({ error: 'Utilisateur ou mot de passe erroné' });
       }
-      bcrypt.compare(req.body.password, user.password)
+      bcrypt.compare(req.body.password, user.password) //Comparaison des hashs pour voir si le mot de passe est valide
         .then((valid) => {
           if (!valid) {
             return res.status(401).json({ error: 'Utilisateur ou mot de passe erroné' });
@@ -85,6 +95,7 @@ exports.login = (req, res, next) => {  //connexion ok
     });
 };
 
+// suppression d'un utilisateur
 exports.deleteAccount = (req, res, next) => { //suppression??
   User.destroy({
     where: {
@@ -100,8 +111,8 @@ exports.deleteAccount = (req, res, next) => { //suppression??
     });
 };
 
-
-exports.userInfo = (req, res, next) => {  //recuperation d'un user specifique??
+//recuperation d'un utilisateur specifique
+exports.userInfo = (req, res, next) => {  
   User.findOne({
     where: {
       email: req.params.email,
@@ -123,7 +134,8 @@ exports.userInfo = (req, res, next) => {  //recuperation d'un user specifique??
     .catch((error) => res.status(404).json({ error }));
 };
 
-exports.usersInfo = (req, res, next) => {  //recuperation de tous les users??
+ //recuperation de tous les utilisateurs
+exports.usersInfo = (req, res, next) => { 
   User.findAll()
     .then((users) => {
       res.status(200).json(users);
@@ -131,7 +143,8 @@ exports.usersInfo = (req, res, next) => {  //recuperation de tous les users??
     .catch((error) => res.status(404).json({ error }));
 };
 
-exports.changeInfo = (req, res, next) => {  //modification info user??
+//modification info de l'utilisateur
+exports.changeInfo = (req, res, next) => {  
   let userObject = req.body;
   User.update( userObject , {
     where: {
@@ -142,7 +155,8 @@ exports.changeInfo = (req, res, next) => {  //modification info user??
     .catch((error) => res.status(400).json({ error }));
 };
 
+// pour bloquer la connexion aprés trop de tentative de connexion  
 exports.rateLimit = rateLimit({
-  windowMs: 2 * 60 * 1000,
-  max: 3,
+  windowMs: 2 * 60 * 1000, // 2 minutes
+  max: 3, // limiter chaque IP à 3 demandes par fenêtreMs
 });

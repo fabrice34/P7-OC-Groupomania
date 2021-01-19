@@ -110,6 +110,11 @@ form{
     margin-top: 50px;
     width:200%;
 }
+.md-layout{
+    margin-bottom: 150px;
+    margin-top: 150px;
+}
+
 @media all and (max-width: 599px)
 {
    form{

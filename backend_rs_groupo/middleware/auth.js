@@ -1,3 +1,9 @@
+/*Au niveau de ce middleware auth.js ici avec mon jsonwebtoken,je viens recuperer mon token lorsque je me connecte 
+dans le header autorization, je le decode .
+je verifie que le token qui à été attribué lors de ma connexion soit le meme que lorsque je supprime ou que je modifie
+et qui me permet tout simplement de verifier et de valider la requette la!
+si ce n'est pas bon en comparant les deux token alors 'user id non valable' et si c'est bon alors on continue
+*/
 const jwt = require('jsonwebtoken'); // Token de protection
 
 module.exports = (req, res, next) => {

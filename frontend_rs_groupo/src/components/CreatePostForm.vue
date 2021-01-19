@@ -12,9 +12,10 @@
             <label for="body">Contenu</label>
             <md-textarea class="form-control" id="body" v-model="body" rows=5 cols=33 required  md-autogrow></md-textarea>
         </md-field>
+
         <md-field>
             <label for="image_URL"></label>
-            <md-input type="file" class="form-control" id="image_URL" @change= "setSelectedImage"  />
+            <md-input type="file" class="form-control" id="image_URL" @change= "setSelectedImage" />
         </md-field>
        </md-card-content>
 
@@ -84,6 +85,10 @@ export default {
 }
 form{
     width:200%;  
+}
+.md-layout{
+    margin-bottom: 100px;
+    margin-top: 100px;
 }
 
  @media all and (max-width: 899px)
