@@ -68,7 +68,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
-
+.connect{margin-bottom: 40px;
+margin-top: 200px;}
  @media all and (max-width: 599px)
  {
 .bg-body{

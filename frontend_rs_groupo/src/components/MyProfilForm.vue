@@ -46,5 +46,6 @@ span{
 .md-table{
     margin-bottom: 250px;
     margin-top: 250px;
+    font-weight: bold;
 }
 </style>

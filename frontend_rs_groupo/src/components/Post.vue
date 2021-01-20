@@ -99,6 +99,7 @@ postForm();
     color:rgb(248, 4, 4);
     font-weight: bold;
     text-align:center;
+    margin-bottom: 40px;
 }
 #post{
     margin-bottom: 50px;
