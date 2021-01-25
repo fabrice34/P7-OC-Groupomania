@@ -1,13 +1,11 @@
 <template>
 <div id="user">
     <h3 class="manager-title font-italic">Mon profil...</h3>
-    <md-table >
-      <md-table-row >
-        <md-table-cell md-label="first_name" md-sort-by="first_name"><span>First name:</span> {{ user.first_name }}</md-table-cell>
-        <md-table-cell md-label="last_name" md-sort-by="last_name"><span>Last name:</span> {{ user.last_name }}</md-table-cell>
-        <md-table-cell md-label="Email" md-sort-by="email"><span>Email:</span> {{ user.email }}</md-table-cell>  
-      </md-table-row>   
-    </md-table>           
+    <div class="my">  
+        <div class="a"><span class="ok">First name:</span> <span class="ff">{{ user.first_name }}</span></div>
+        <div class="a"><span class="ok">Last name:</span> <span class="ff"> {{ user.last_name }}</span></div>
+        <div class="a"><span class="ok">Email:</span> <span class="ff">{{ user.email }}</span></div>     
+    </div>           
 </div>
 </template>
 
@@ -39,13 +37,24 @@ export default {
 </script>
 
 <style scoped lang="scss">
-span{   
+.ok{   
     color:rgb(173, 29, 29);
 }
+.my{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 100px;
+  margin-top: 100px;
+  font-weight: bold;
+}
 
-.md-table{
-    margin-bottom: 250px;
-    margin-top: 250px;
-    font-weight: bold;
+
+
+@media all and (max-width: 599px){
+.my{
+  display: flex;
+  flex-direction: column;
+}
 }
 </style>

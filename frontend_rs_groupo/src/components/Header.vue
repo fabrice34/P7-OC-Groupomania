@@ -17,11 +17,11 @@ export default {
 
 <style scoped>
 .headerTitle{
-    background-color: #448aff;
+    background-color: #004BCC;
 }
 .main-title{
     font-size: 1.5rem;
-    color: black;
+    color: #CCCCCC;
     font-weight: bolder;
     font-family: Georgia, 'Times New Roman', Times, serif ;
 }
@@ -37,7 +37,7 @@ export default {
     padding-left: 5px;
     padding-right: 5px;
 }
-  @media all and (max-width: 599px)
+  @media all and (max-width: 899px)
   {
       .headerTitle{
           display: flex;

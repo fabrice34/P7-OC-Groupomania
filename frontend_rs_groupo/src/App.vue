@@ -1,21 +1,19 @@
 <template>
   <div id="app">
     <header>
-      <Header/>
-      <div class="menu"> 
-        <md-tabs class="md-primary" md-alignment="centered">  
-         <md-tab id="tab-Home" md-label="Home"><router-link to="/allpost">All post</router-link></md-tab>      
-          <md-tab id="tab-create" md-label="create"><router-link to="/create">Create post</router-link></md-tab>
-          <md-tab id="tab-Users" md-label="Users"><router-link to="/profil">All profil</router-link></md-tab>
-          <md-tab id="tab-my profil" md-label="My profil"><router-link to="/myprofil">My profil</router-link></md-tab>
-          <md-tab id="tab-Update User" md-label="Update User"> <router-link to="/updateuserform">Update Profil</router-link></md-tab>
-          <md-tab id="tab-exit" md-label="exit"><a href="#" v-on:click="exitUser">EXIT</a> </md-tab>        
-        </md-tabs>
-      </div> 
-      
+        <Header/>    
+        <div class="md-primarys" >  
+          <router-link to="/allpost"><span class="color">All post</span></router-link>
+          <router-link to="/create"><span class="color">Create post</span></router-link>  
+          <router-link to="/profil"><span class="color">All profil</span></router-link> 
+          <router-link to="/myprofil"><span class="color">My profil</span></router-link> 
+          <router-link to="/updateuserform"><span class="color">Update Profil</span></router-link> 
+          <a href="#" v-on:click="exitUser"><span class="color">EXIT</span></a>  
+        </div>     
     </header>
 
     <body class="bg-body">
+      
        <div class="connect" v-if =" id === null " >
           <router-link to="/signup">Inscription</router-link> ||
           <router-link to="/login">Connexion</router-link>
@@ -68,14 +66,29 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
 }
-.connect{margin-bottom: 40px;
+.connect{margin-bottom: 100px;
 margin-top: 200px;}
+.md-primarys{ 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.color{
+  color:#003CA3;
+}
  @media all and (max-width: 599px)
  {
 .bg-body{
 margin-bottom: 100px;
 }
-
+.md-primary{
+  display: flex;
+  flex-direction: column;
+}
+.connect{
+  margin-top:100px;
+}
 }
 
 </style>

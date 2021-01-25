@@ -115,7 +115,7 @@ form{
     margin-top: 150px;
 }
 
-@media all and (max-width: 599px)
+@media all and (max-width: 899px)
 {
    form{
    

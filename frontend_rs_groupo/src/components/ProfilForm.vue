@@ -2,19 +2,13 @@
 <div id="user">
     <h3 class="manager-title font-italic">liste des users...</h3>
 
-    <md-table v-for="(user, id) in users" v-bind:key="id" md-card>
-      <md-table-row >
-        <md-table-cell md-label="ID" md-sort-by="id" md-numeric>{{ user.id }}</md-table-cell>
-        <md-table-cell md-label="first_name" md-sort-by="first_name">{{ user.first_name }}</md-table-cell>
-        <md-table-cell md-label="last_name" md-sort-by="last_name">{{ user.last_name }}</md-table-cell>
-        <md-table-cell md-label="Email" md-sort-by="email">{{ user.email }}</md-table-cell>
-        <md-table-cell md-label="Date" md-sort-by="date">{{ user.created_date }}</md-table-cell>
-       
-        <md-card-actions>
-          <md-button type="submit" class="md-primary"  v-on:click.prevent="deleteUser(user.id)">Suprimer profil</md-button>
-        </md-card-actions>
-      </md-table-row>   
-    </md-table>
+    <div class="listuser" v-for="(user, id) in users" v-bind:key="id" >  
+        <div class="a">{{ user.first_name }}</div>
+        <div class="a">{{ user.last_name }}</div>
+        <div class="a">{{ user.email }}</div>
+        <div class="a">{{ user.created_date }}</div>  
+        <md-button type="submit" class="md-primary"  v-on:click.prevent="deleteUser(user.id)">Suprimer profil</md-button>      
+    </div>
 
 </div>
 </template>
@@ -78,11 +72,11 @@ userForm();
     color:#fff;
     font-weight: bold;
 }
-.md-table-cell{
-    text-align:start;
-    color:red;
+.a{
+    
+    font-weight: bold;
 }
-.md-table{
+.listuser{
     margin-bottom: 100px;
     margin-top: 100px;
 }

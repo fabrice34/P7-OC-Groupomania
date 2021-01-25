@@ -12,7 +12,7 @@
       </md-card-header>
 
       <md-card-media>
-        <img v-bind:src="post.image_URL" />
+        <img v-bind:src="post.image_URL" alt="image" />
       </md-card-media>
     
         
@@ -20,7 +20,7 @@
          <div class="md-body">{{post.body}}</div>
           <div class="md-date">créer le :{{post.created_date}}</div> 
       </md-card-content>      
-      <md-button type="submit" class="md-primary"  v-on:click="deletePost(post.id)" >Supprimer l'article</md-button>    
+      <md-button type="submit" class="md-primary"  v-on:click="deletePost(post.id)" ><span class="sup">Supprimer l'article</span></md-button>    
     </md-card>    
 </div>
 </template>
@@ -95,7 +95,7 @@ postForm();
 
 <style scoped lang="scss">
 .md-primary{
-    background-color: #fa0808;
+    background-color: #000000;
     color:rgb(248, 4, 4);
     font-weight: bold;
     text-align:center;
@@ -103,12 +103,13 @@ postForm();
 }
 #post{
     margin-bottom: 50px;
-    color:rgb(83, 255, 15);
+    color:#1B6100;
 }
 .md-card{
      border-bottom: 2px double rgb(10, 1, 1);
      margin-bottom: 100px;
 }
+.md-list-item-text{color:#000000;}
 .md-title, .md-body {
     color: rgb(36, 35, 35);
     font-weight: bold;
@@ -118,7 +119,7 @@ postForm();
     font-size:12px;
 }
 span {
-    color:#000000;
+    color:#F7F7F7;
     font-weight: bolder;
 }
 .md-card-media img {

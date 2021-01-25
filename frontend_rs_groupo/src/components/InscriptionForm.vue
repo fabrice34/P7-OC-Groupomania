@@ -2,22 +2,16 @@
   <div>
     <form novalidate class="md-layout" >
       <md-card class="md-layout-item md-size-50 md-small-size-100">
-        <md-card-content>
-          <div class="md-layout md-gutter">
-            <div class="md-layout-item md-small-size-100">
+   
               <md-field>
                 <label for="first-name">First Name</label>
                 <md-input name="first-name" id="first-name" autocomplete="given-name" v-model="first_name"  />   
               </md-field>
-            </div>
-
-            <div class="md-layout-item md-small-size-100">
+           
               <md-field>
                 <label for="last-name">Last Name</label>
                 <md-input name="last-name" id="last-name" autocomplete="family-name" v-model="last_name"  /> 
               </md-field>
-            </div>
-          </div>
 
           <md-field>
             <label for="email">Email</label>
@@ -28,8 +22,7 @@
              <label for="password">Password</label>
              <md-input name="password" type="password" id="password" autocomplete="given-password" v-model="password"  />               
           </md-field>
-        </md-card-content>     
-
+           
         <md-card-actions>
           <md-button type="submit" class="md-primary"  v-on:click.prevent="signUpUser">Create user</md-button>
         </md-card-actions>
@@ -89,19 +82,23 @@ export default {
 label{
      color:#fff;
 }
-.img{
-    width:20px;
-}
-form{
+
+
+.md-layout{
     margin-bottom: 100px;
     margin-top: 50px;
     width: 200%;
 }
-@media all and (max-width: 599px)
-{
-   form{
-   
-    width:100%;
-} 
+
+
+ @media all and (max-width: 599px)
+  {
+
+     .md-layout{
+    width:100%; 
+    
 }
+  }
+
+ 
 </style>
